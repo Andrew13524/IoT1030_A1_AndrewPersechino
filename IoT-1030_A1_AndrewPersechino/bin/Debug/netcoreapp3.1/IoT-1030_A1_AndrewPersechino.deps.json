@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "IoT-1030_A1_AndrewPersechino/1.0.0": {
+        "runtime": {
+          "IoT-1030_A1_AndrewPersechino.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IoT-1030_A1_AndrewPersechino/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
