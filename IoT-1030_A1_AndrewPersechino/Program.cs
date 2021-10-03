@@ -22,7 +22,7 @@ namespace A1
 			}
 		}
 	}
-
+	
 	public static class SubsequenceFinder
 	{
 		/// <summary>
@@ -44,13 +44,14 @@ namespace A1
 			return false;
 		}
 	}
-
+	enum Suit { Clubs, Spades, Hearts, Diamonds }
+	enum Value { Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King }
 	public class CardPicker
 	{
 		static Random random = new Random(1);
 
-		static Dictionary<string, int> NumOfValues = new Dictionary<string, int>();
-		static Dictionary<string, int> NumOfSuits = new Dictionary<string, int>();
+		static Dictionary<Value, int> NumOfValues = new Dictionary<Value, int>();
+		static Dictionary<Suit, int> NumOfSuits = new Dictionary<Suit, int>();
 		/// <summary>
 		/// Picks a random (with replacement) number of cards.
 		/// </summary>
@@ -76,18 +77,11 @@ namespace A1
 		/// Chooses a random value for a card (Ace, 2, 3, ... , Queen, King)
 		/// </summary>
 		/// <returns>A string that represents the value of a card</returns>
-		private static string RandomValue()
+		private static Value RandomValue()
 		{
             while (true) // Continuously roll for a value until non-duplicate found
 			{
-				var randNum = random.Next(1, 14);
-				string value;
-
-				if      (randNum == 1)  value = "Ace";
-				else if (randNum == 11) value = "Jack";
-				else if (randNum == 12) value = "Queen";
-				else if (randNum == 13) value = "King";
-				else                    value = $"{randNum}";
+				Value value = (Value)random.Next(1, 14);
 
 				if(!IsDuplicateValue(value))
                 {
@@ -99,7 +93,7 @@ namespace A1
 			}
 			
 		}
-		private static bool IsDuplicateValue(string value)
+		private static bool IsDuplicateValue(Value value)
         {
             try
             {
@@ -115,17 +109,11 @@ namespace A1
 		/// Chooses a random suit for a card (Clubs, Diamonds, Hearts, Spades)
 		/// </summary>
 		/// <returns>A string that represents the suit of a card.</returns>
-		private static string RandomSuit()
+		private static Suit RandomSuit()
 		{
             while (true) // Continuously roll for a suit until non-duplicate found
             {
-				var randNum = random.Next(1, 5);
-				string suit;
-
-				if      (randNum == 1) suit = "Spades";
-				else if (randNum == 2) suit = "Clubs";
-				else if (randNum == 3) suit = "Diamonds";
-				else                   suit = "Hearts";
+				Suit suit = (Suit)random.Next(1, 5);
 
 				if (!IsDuplicateSuit(suit))
 				{
@@ -136,7 +124,7 @@ namespace A1
 				}
 			}
 		}
-		private static bool IsDuplicateSuit(string suit)
+		private static bool IsDuplicateSuit(Suit suit)
 		{
 			try
 			{
